@@ -7,7 +7,10 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    proxy: {
+      '/pdf': 'http://localhost:3000'
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
