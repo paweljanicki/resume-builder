@@ -1,6 +1,8 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin')
+
 
 module.exports = {
   entry: './src/index.js',
@@ -13,9 +15,20 @@ module.exports = {
     }
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  module: {
+    rules: [{
+        test: /\.scss$/,
+        use: [
+            "style-loader", // creates style nodes from JS strings
+            "css-loader", // translates CSS into CommonJS
+            "sass-loader" // compiles Sass to CSS, using Node Sass by default
+        ]
+    }]
+  }
 };
