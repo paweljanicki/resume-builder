@@ -2,25 +2,29 @@ import CodeMirror from 'codemirror';
 import 'codemirror/mode/css/css';
 import './styles/style.scss';
 import { createPdf } from './http';
+import { defaultStyles } from './template';
 
-const css = CodeMirror.fromTextArea(document.getElementById("css"), {
+let resizeTimeout;
+
+const css = CodeMirror.fromTextArea(document.getElementById('css'), {
   lineNumbers: true,
   lineWrapping: true,
-  mode: "css"
+  mode: 'css'
 });
 
-const html = CodeMirror.fromTextArea(document.getElementById("html"), {
+const html = CodeMirror.fromTextArea(document.getElementById('html'), {
   lineNumbers: true,
   lineWrapping: true,
-  mode: "text/html"
+  mode: 'text/html'
 });
 
-const preview = document.getElementById("preview").contentWindow.document;
+const preview = document.getElementById('preview').contentWindow.document;
 preview.open();
 preview.writeln(`
-<div id="page"></div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-<style id="style"></style>
+  <div id="page"></div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <style>${defaultStyles}</style>
+  <style id="style"></style>
 `);
 preview.close();
 
@@ -54,21 +58,76 @@ window.onload = () => {
 }
 
 const previewIframe = document.getElementById('preview');
+const scaleSelector = document.getElementById('scale-selector');
+const scaleValues = ['50', '60', '70', '80', '90', '100', '1'];
 
 function setPreviewScale(scale) {
   const previewWrapper = document.getElementById('preview-wrapper');
 
   previewIframe.style.transform = `scale(${scale})`;
-  previewWrapper.style.height = `${previewWrapper.clientHeight * scale}px`;
+  previewWrapper.style.height = `${(previewIframe.clientHeight * scale) + 40}px`;
 }
 
 function setInitialPreviewScale() {
-  const previewIframe = document.getElementById('preview');
-
   const maxWidth = document.body.clientWidth / 2;
+  disableToBigScaleValues(maxWidth)
 
   if (previewIframe.clientWidth > maxWidth) {
-    const scale = (maxWidth / previewIframe.clientWidth) * 0.9;
-    setPreviewScale(scale);
+    setFitToWidthPreviewScale();
+  } else {
+    scaleSelector.value = '100';
+  }
+}
+
+function setFitToWidthPreviewScale() {
+  const maxWidth = document.body.clientWidth / 2;
+  const scale = (maxWidth / previewIframe.clientWidth) * 0.97;
+  setPreviewScale(scale);
+  scaleSelector.value = '1';
+}
+
+scaleSelector.onchange = event => {
+  const value = parseInt(event.target.value);
+  if (value === 1) {
+    setFitToWidthPreviewScale()
+  } else {
+    setPreviewScale(value / 100);
+  }
+}
+
+function isScaleEnabled(percentageScale, maxWidth) {
+  percentageScale = parseInt(percentageScale);
+  if ((percentageScale / 100) * previewIframe.clientWidth > maxWidth) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function disableToBigScaleValues(maxWidth) {
+  Array.from(scaleSelector.getElementsByTagName('option')).forEach(element => {
+    if (isScaleEnabled(element.value, maxWidth)) {
+      element.disabled = false;
+    } else {
+      element.disabled = true;
+    }
+  });
+}
+
+function onResize() {
+  const maxWidth = document.body.clientWidth / 2;
+  disableToBigScaleValues(maxWidth);
+
+  if (scaleSelector.value === '1' || !isScaleEnabled(scaleSelector.value, maxWidth)) {
+    setFitToWidthPreviewScale();
+  }
+}
+
+window.onresize = () => {
+  if ( !resizeTimeout ) {
+    resizeTimeout = setTimeout(function() {
+      onResize();
+      resizeTimeout = null;
+    }, 16.6);
   }
 }
