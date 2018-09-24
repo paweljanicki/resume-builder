@@ -74,25 +74,21 @@
   </header>
   <div class="container">
     <div class="editors-column">
-      <div class="editors-controls">
-        <button id="update-button">Update Preview</button>
-        <button id="download-button">Download PDF</button>
-      </div>
-      <div class="editor">
-        <header class="editor__header">
-          <h4 class="editor__title">HTML editor</h4>
-        </header>
-        <textarea id="html"></textarea>
-      </div>
-      <div class="editor">
-        <header class="editor__header">
-          <h4 class="editor__title">CSS editor</h4>
-        </header>
-        <textarea id="css"></textarea>
+      <h4 class="editor__title" id="html-editor-header">HTML</h4>
+      <div class="editors-container">
+        <div class="editor" id="html-editor">
+          <textarea id="html"></textarea>
+        </div>
+        <h4 class="editor__title" id="styles-editor-header">CSS</h4>
+        <div class="editor" id="styles-editor">
+          <textarea id="css"></textarea>
+        </div>
       </div>
     </div>
     <div id="preview-wrapper" class="preview-column">
       <div class="preview-controls">
+        <button id="update-button">Update Preview</button>
+        <button id="download-button">Download PDF</button>
         <select name="scale" id="scale-selector">
           <option value="50">50%</option>
           <option value="60">60%</option>
