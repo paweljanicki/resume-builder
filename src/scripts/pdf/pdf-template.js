@@ -13,14 +13,12 @@ export const createTemplate = (style, html) => {
   </body>
   </html>
   `;
-}
+};
 
 export const defaultStyles = `
-  h1 {
-    font-size: 40px;
-  }
-  #page {
+  .pdf-page {
     overflow: hidden;
+    width: 100%;
     height: 100%;
   }
-`
+`;

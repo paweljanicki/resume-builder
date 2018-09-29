@@ -1,0 +1,38 @@
+.editors-container {
+  height: calc(100% - 30px);
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  padding: 3px 29px;
+  color: $color-gray-1;
+  border-top: 4px solid $color-gray-7;
+  border-bottom: 1px solid $color-gray-7;
+  background: $color-gray-10;
+}
+
+#styles-editor-header {
+  cursor: row-resize;
+}
+
+.editor__title {
+  margin: 0;
+  font-size: $font-medium;
+}
+
+.editor {
+  &.transiton {
+    transition: height 300ms;
+  }
+}
+
+.CodeMirror {
+  height: 100%;
+}
+
+#html-tabs {
+  display: flex;
+}

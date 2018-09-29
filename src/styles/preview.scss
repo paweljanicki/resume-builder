@@ -1,0 +1,19 @@
+#preview {
+  width: 595px;
+  height: 842px;
+  transform-origin: 0 0;
+  border: 1px solid $dark-color;
+}
+
+#preview-wrapper {
+  overflow: hidden;
+}
+
+.preview-controls {
+  height: 30px;
+}
+
+.preview-scroll-wrapper {
+  overflow-y: scroll;
+  height: calc(100vh - 80px);
+}

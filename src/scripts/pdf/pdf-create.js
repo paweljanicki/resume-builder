@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { createTemplate } from './template';
+import { createTemplate } from './pdf-template';
+import { stylesCodeMirror, htmlCodeMirror } from '../editors/editors-codemirror';
+import { id } from '../utils';
 
 export const createPdf = (css, html) => {
   axios({
@@ -16,4 +18,8 @@ export const createPdf = (css, html) => {
     document.body.appendChild(link);
     link.click();
   });
-}
+};
+
+id('download-button').click(() => {
+  createPdf(stylesCodeMirror.doc.getValue(), htmlCodeMirror.doc.getValue());
+});

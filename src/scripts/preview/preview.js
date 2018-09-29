@@ -1,19 +1,22 @@
-import { basePreviewScale } from './consts';
+import { basePreviewScale } from '../consts';
+import { id } from '../utils';
+import { htmlCodeMirror, stylesCodeMirror } from '../editors/editors-codemirror';
+import { page, style} from '..';
 
-const previewIframe = document.getElementById('preview');
-const scaleSelector = document.getElementById('scale-selector');
+const previewIframe = id('preview');
+const scaleSelector = id('scale-selector');
 let resizeTimeout;
 
 function setPreviewScale(scale) {
-  const previewWrapper = document.getElementById('preview-wrapper');
+  const previewWrapper = id('preview-wrapper');
   scale = scale * basePreviewScale;
 
   previewIframe.style.transform = `scale(${scale})`;
-  previewWrapper.style.height = `${(previewIframe.clientHeight * scale) + 40}px`;
+  previewWrapper.style.height = `${(previewIframe.clientHeight * scale) + 20}px`;
 }
 
 function setFitToWidthPreviewScale() {
-  const maxWidth = document.body.clientWidth / 2;
+  const maxWidth = (document.body.clientWidth / 2) - 25;
   const scale = (maxWidth / (previewIframe.clientWidth * basePreviewScale)) * 0.97;
   setPreviewScale(scale);
   scaleSelector.value = '1';
@@ -22,11 +25,11 @@ function setFitToWidthPreviewScale() {
 scaleSelector.onchange = event => {
   const value = parseInt(event.target.value);
   if (value === 1) {
-    setFitToWidthPreviewScale()
+    setFitToWidthPreviewScale();
   } else {
     setPreviewScale(value / 100);
   }
-}
+};
 
 function isScaleEnabled(percentageScale, maxWidth) {
   percentageScale = parseInt(percentageScale);
@@ -48,7 +51,7 @@ function disableToBigScaleValues(maxWidth) {
 }
 
 function onResize() {
-  const maxWidth = document.body.clientWidth / 2;
+  const maxWidth = (document.body.clientWidth / 2) - 25;
   disableToBigScaleValues(maxWidth);
 
   if (scaleSelector.value === '1' || !isScaleEnabled(scaleSelector.value, maxWidth)) {
@@ -63,10 +66,10 @@ window.onresize = () => {
       resizeTimeout = null;
     }, 16.6);
   }
-}
+};
 
 export function setInitialPreviewScale() {
-  const maxWidth = document.body.clientWidth / 2;
+  const maxWidth = (document.body.clientWidth / 2) - 25;
   disableToBigScaleValues(maxWidth);
 
   if ((previewIframe.clientWidth * basePreviewScale) > maxWidth) {
@@ -75,4 +78,26 @@ export function setInitialPreviewScale() {
     setPreviewScale(1);
     scaleSelector.value = '100';
   }
+}
+
+id('update-button').click(() => {
+  updatePreview();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    updatePreview();
+  }
+}, false);
+
+function updatePreview() {
+  const htmlValue = htmlCodeMirror.doc.getValue();
+  const cssValue = stylesCodeMirror.doc.getValue();
+
+  page.innerHTML = htmlValue;
+  style.innerHTML = cssValue;
+
+  localStorage.setItem('html', htmlValue);
+  localStorage.setItem('css', cssValue);
 }

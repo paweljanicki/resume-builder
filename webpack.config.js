@@ -1,11 +1,9 @@
-var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin')
-
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/scripts/index.js',
   devtool: 'inline-source-map',
   mode: 'development',
   devServer: {
@@ -24,18 +22,18 @@ module.exports = {
   ],
   module: {
     rules: [{
-        test: /\.scss$/,
-        use: [
-            "style-loader", // creates style nodes from JS strings
-            "css-loader", // translates CSS into CommonJS
-            "sass-loader" // compiles Sass to CSS, using Node Sass by default
-        ]
+      test: /\.scss$/,
+      use: [
+        'style-loader', // creates style nodes from JS strings
+        'css-loader', // translates CSS into CommonJS
+        'sass-loader' // compiles Sass to CSS, using Node Sass by default
+      ]
     }, {
       test: /\.css$/,
       use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader" // translates CSS into CommonJS
+        'style-loader', // creates style nodes from JS strings
+        'css-loader' // translates CSS into CommonJS
       ]
-  }]
+    }]
   }
 };
