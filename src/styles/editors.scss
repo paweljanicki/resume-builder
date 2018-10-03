@@ -1,12 +1,13 @@
+$editorHeaderHeight: 30px;
+
 .editors-container {
-  height: calc(100% - 30px);
+  height: calc(100% - #{$editorHeaderHeight});
 }
 
 .editor-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 30px;
+  height: $editorHeaderHeight;
   padding: 3px 29px;
   color: $color-gray-1;
   border-top: 4px solid $color-gray-7;
@@ -35,4 +36,31 @@
 
 #html-tabs {
   display: flex;
+}
+
+#add-page {
+  height: $editorHeaderHeight;
+  margin-top: -7px;
+  padding: 4px 15px 0;
+  line-height: $editorHeaderHeight - 4px;
+  cursor: pointer;
+}
+
+.page-tab {
+  height: $editorHeaderHeight - 5px;
+  margin-top: -3px;
+  padding: 0 5px;
+  line-height: $editorHeaderHeight - 5px;
+  cursor: pointer;
+  border-right: 1px solid $color-gray-7;
+  background: $color-gray-6;
+
+  &:first-child {
+    border-left: 1px solid $color-gray-7;
+  }
+
+  &.active-tab {
+    height: $editorHeaderHeight - 4px;
+    background: $editor-background;
+  }
 }

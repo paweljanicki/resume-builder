@@ -1,2 +1,2 @@
 import './editors-resize';
-import './editors-tabs';
+// import './editors-tabs';

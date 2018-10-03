@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { createTemplate } from './pdf-template';
 import { stylesCodeMirror, htmlCodeMirror } from '../editors/editors-codemirror';
 import { id } from '../utils';
 
@@ -7,8 +6,8 @@ export const createPdf = (css, html) => {
   axios({
     url: '/pdf',
     method: 'PUT',
-    headers: { 'content-type': 'text/html' },
-    data: createTemplate(css, html),
+    headers: { 'content-type': 'application/json' },
+    data: {css, html},
     responseType: 'blob'
   }).then((response) => {
     const url = window.URL.createObjectURL(new Blob([response.data]));
