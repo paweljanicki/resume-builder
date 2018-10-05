@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "/src/scripts/index.js",
+  "engines": {
+    "node": "8.11.3"
+  },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "node server.js",
+    "build": "webpack",
+    "webpack-server": "webpack-dev-server",
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +31,12 @@
     "axios": "^0.18.0",
     "codemirror": "^5.40.0",
     "emmet-codemirror": "^1.2.5",
-    "split.js": "^1.3.5"
+    "split.js": "^1.3.5",
+    "autoprefixer": "^9.1.5",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "html-pdf": "^2.2.0",
+    "postcss": "^7.0.5"
   }
 }
