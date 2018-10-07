@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Front Work | Resume builder</title>
   <style>
     #loader {
       display: flex;
@@ -69,8 +69,21 @@
 <body class="body">
   <header class="page-header">
     <h1 class="page-title">
-      CV builder
+      <a href="#">Front Work | Resume builder</a>
     </h1>
+    <nav>
+      <ul class="navigation">
+        <li class="navigation__item">
+          <a class="navigation__item--link" href="#get-started">Get started</a>
+        </li>
+        <li class="navigation__item">
+          <a class="navigation__item--link" href="#about">About</a>
+        </li>
+        <li class="navigation__item">
+          <a class="navigation__item--link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
   </header>
   <div class="container">
     <div class="editors-column">
@@ -93,8 +106,8 @@
     </div>
     <div class="preview-column">
       <div class="preview-controls">
-        <button id="update-button">Update Preview</button>
-        <button id="download-button">Download PDF</button>
+        <button class="button" id="update-button">Update Preview</button>
+        <button class="button" id="download-button">Download PDF</button>
         <select name="scale" id="scale-selector">
           <option value="50">50%</option>
           <option value="60">60%</option>
@@ -113,9 +126,43 @@
     </div>
   </div>
   <div class="clearfix"></div>
+  <div id="side-section">
+    <span class="close-icon" id="side-section-close"><i class="fas fa-times fa-2x"></i></span>
+    <div id="side-content"></div>
+  </div>
+  <div id="entry-content">
+    <h3>Hello! Welcome to Front Work Resume builder</h3>
+    <h4>Get started in 3 simple steps</h4>
+    <ol class="get-started-tips">
+      <li class="get-started-tips__item">
+        Start editing HTML and CSS in the editors on the left hand side
+      </li>
+      <li class="get-started-tips__item">
+        Click "Update preview" button or press "cmd/ctrl + s" to update preview
+      </li>
+      <li class="get-started-tips__item">
+        Click "Download button" to download PDF file
+      </li>
+    </ol>
+    <button class="button" id="get-started">Start</button>
+    
+    <span>By clicking start you agree with our cookies policy</span>
+  </div>
   <div id="loader" class="loader-active">
     <div class="lds-hourglass"></div>
   </div>
+  <!-- <div id="cookies-note">
+    <p class="cookies-note__title">Cookies and privacy policy</p>
+    <p class="cookies-note__description">
+      This website uses cookies to analyse your use of the website and localStorage in your browser to store the code you write.
+      If you don't accept this, you will loose all your input when you close the browser.
+      We don't store any of your data. 
+    </p>
+    <div class="cookies-note__buttons">
+      <span id="decline-cookies">decline</span>
+      <button class="button" id="accept-cookies">Accept cookies</button>
+    </div>
+  </div> -->
   <div id="mobile-note">
     <p class="mobile-message__title">Hey, thanks for stepping in!</p>
     <p class="mobile-note__message">
@@ -124,5 +171,6 @@
     </p>
     <p class="mobile-note__cta">Check it on a bigger screen :)</p>
   </div>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </body>
 </html>

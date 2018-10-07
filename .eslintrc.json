@@ -29,6 +29,7 @@
         "eol-last": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": "off"
     }
 }

@@ -91,7 +91,7 @@ document.addEventListener('keydown', function(e) {
   }
 }, false);
 
-function updatePreview() {
+export function updatePreview() {
   const htmlValue = htmlCodeMirror.doc.getValue();
   const cssValue = stylesCodeMirror.doc.getValue();
 

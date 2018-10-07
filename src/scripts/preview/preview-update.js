@@ -1,4 +1,7 @@
 const defaultIframeStyles = `
+  body {
+    background: #ffffff;
+  }
   #page {
     overflow: hidden;
     height: 100%;

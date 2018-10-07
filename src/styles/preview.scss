@@ -1,4 +1,5 @@
 #preview {
+  position: relative;
   width: 595px;
   height: 842px;
   transform-origin: 0 0;
@@ -10,10 +11,20 @@
 }
 
 .preview-controls {
+  display: flex;
   height: 30px;
+  padding: 2px 30px 2px 0;
 }
 
 .preview-scroll-wrapper {
   overflow-y: scroll;
   height: calc(100vh - 80px);
+}
+
+#scale-selector {
+  margin-left: auto;
+}
+
+#update-button {
+  margin-right: 10px;
 }

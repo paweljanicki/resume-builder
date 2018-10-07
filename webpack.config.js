@@ -10,13 +10,14 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     proxy: {
-      '/pdf': 'http://localhost:3000'
+      '/pdf': 'http://localhost:5000'
     }
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './src/assets/favicon.ico'
     }),
     new webpack.HotModuleReplacementPlugin()
   ],

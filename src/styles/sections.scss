@@ -1,0 +1,28 @@
+#side-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  min-width: 500px;
+  max-width: 100%;
+  height: 100vh;
+  transform: translateX(100%);
+  background: $color-gray-1;
+
+  &.show-content {
+    transform: translateX(0);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &.transition {
+    transition: transform 500ms ease-in-out;
+  }
+}
+
+.close-icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}

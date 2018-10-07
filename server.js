@@ -11,12 +11,8 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // Create link to Webapp build directory
-var distDir = __dirname + "/dist/";
+var distDir = __dirname + '/dist/';
 app.use(express.static(distDir));
-
-app.get('/asd', (req, res) => {
-  res.send('Hello World!');
-});
 
 app.put('/pdf', (req, res) => {
   var options = { format: 'A4' };
@@ -80,4 +76,4 @@ function createTemplate(style, html) {
 //   });
 // })
 
-app.listen(PORT, () => {console.log(`Listening on port ${PORT}...`);})
+app.listen(PORT, () => {console.log(`Listening on port ${PORT}...`);});
