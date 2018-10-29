@@ -1,4 +1,5 @@
-var express = require('express')
+var express = require('express');
+var path = require('path');
 var app = express();
 var pdf = require('html-pdf');
 var bodyParser = require('body-parser');
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 // Create link to Webapp build directory
 var distDir = __dirname + '/dist/';
 app.use(express.static(distDir));
+app.use('/assets', express.static(path.join(__dirname, 'src/assets')));
 
 app.put('/pdf', (req, res) => {
   var options = { format: 'A4' };
@@ -34,7 +36,7 @@ app.put('/pdf', (req, res) => {
         'Content-Disposition': 'attachment; filename=some_file.pdf',
         'Content-Length': buffer.length
       });
-      res.end(new Buffer(buffer, 'binary'))
+      res.end(new Buffer(buffer, 'binary'));
     });
   });
 });

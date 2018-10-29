@@ -17,10 +17,12 @@ export const getStartedContent = `
   </h4>
   <ul>
     <li>Import stylesheets and fonts</li>
-    <li>Resize the editors by dragging CSS editor</li>
-    <li>include images</li>
+    <li>Resize the editors by dragging/clicking editor header</li>
+    <li>Resize the preview</li>
+    <li>Use common keyboard shortcuts</li>
+    <li>Include images</li>
   </ul>
-  <h4>What you can't do yet (available soon)</h4>
+  <h4>What you can't do yet (PR welcomed)</h4>
   <ul>
     <li>Add more than one page</li>
     <li>Change page size</li>

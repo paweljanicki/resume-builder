@@ -24,7 +24,7 @@ export const stylesCodeMirror = CodeMirror.fromTextArea(id('css'), {
   keyMap: 'sublime',
   autoCloseBrackets: true,
   extraKeys: {'Ctrl-Space': 'autocomplete'},
-  viewportMargin: 30
+  viewportMargin: 60
 });
 
 export const htmlCodeMirror = CodeMirror.fromTextArea(id('html'), {
@@ -37,5 +37,5 @@ export const htmlCodeMirror = CodeMirror.fromTextArea(id('html'), {
   extraKeys: {'Ctrl-Space': 'autocomplete'},
   tabSize: 2,					// default already is 4
   indentWithTabs: true,		// default is false
-  viewportMargin: 30
+  viewportMargin: 60
 });

@@ -2,6 +2,7 @@ import { basePreviewScale } from '../consts';
 import { id } from '../utils';
 import { htmlCodeMirror, stylesCodeMirror } from '../editors/editors-codemirror';
 import { page, style} from '..';
+import { mobileNoteContent } from '../sections/mobileNote';
 
 const previewIframe = id('preview');
 const scaleSelector = id('scale-selector');
@@ -56,6 +57,10 @@ function onResize() {
 
   if (scaleSelector.value === '1' || !isScaleEnabled(scaleSelector.value, maxWidth)) {
     setFitToWidthPreviewScale();
+  }
+
+  if(document.body.clientWidth < 1024) {
+    id('mobile-note').innerHTML = mobileNoteContent;
   }
 }
 

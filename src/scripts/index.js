@@ -11,6 +11,7 @@ import { stylesCodeMirror, htmlCodeMirror } from './editors/editors-codemirror';
 import { preview } from './preview/preview-update';
 import { id } from './utils';
 import { defaultHtml, defaultCss } from './editors/editors-defaults';
+import { mobileNoteContent } from './sections/mobileNote';
 
 export let page;
 export let style;
@@ -34,6 +35,10 @@ window.onload = () => {
   setTimeout(() => {
     loader.classList.add('loader-inactive');
   }, 300);
+
+  if(document.body.clientWidth < 1024) {
+    id('mobile-note').innerHTML = mobileNoteContent;
+  }
 };
 
 // if (localStorage.getItem('cookies-note') === 'accepted') {

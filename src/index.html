@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128213587-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128213587-1');
+  </script>
   <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Front Work | Resume builder</title>
+  <meta name="description" content="Resume builder for Frontend / Web developers. Write HTML and CSS, preview the result and generate PDF">
+  <meta property="og:title" content="Front Work | Resume builder">
+  <meta property="og:description" content="Resume builder for Frontend / Web developers. Write HTML and CSS, preview the result and generate PDF">
+  <meta property="og:image" content="https://frontwork.io/assets/thumbnail.png">
+  <meta property="og:url" content="https://frontwork.io">
   <style>
     #loader {
       display: flex;
@@ -144,33 +158,14 @@
         Click "Download button" to download PDF file
       </li>
     </ol>
-    <button class="button" id="get-started">Start</button>
+    <button class="button button--big" id="get-started">Start</button>
     
-    <span>By clicking start you agree with our cookies policy</span>
+    <span class="legal-note">By clicking start you agree the we use cookies</span>
   </div>
   <div id="loader" class="loader-active">
     <div class="lds-hourglass"></div>
   </div>
-  <!-- <div id="cookies-note">
-    <p class="cookies-note__title">Cookies and privacy policy</p>
-    <p class="cookies-note__description">
-      This website uses cookies to analyse your use of the website and localStorage in your browser to store the code you write.
-      If you don't accept this, you will loose all your input when you close the browser.
-      We don't store any of your data. 
-    </p>
-    <div class="cookies-note__buttons">
-      <span id="decline-cookies">decline</span>
-      <button class="button" id="accept-cookies">Accept cookies</button>
-    </div>
-  </div> -->
-  <div id="mobile-note">
-    <p class="mobile-message__title">Hey, thanks for stepping in!</p>
-    <p class="mobile-note__message">
-      This application is intended to work on screens wider than 1023px and it's not intended to work on mobile devices.
-      Writing code requires a proper amount of space on the screen, and you current screen size is not enough to provide you with a great experience.
-    </p>
-    <p class="mobile-note__cta">Check it on a bigger screen :)</p>
-  </div>
+  <div id="mobile-note"></div>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </body>
 </html>
