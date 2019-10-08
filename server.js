@@ -6,8 +6,6 @@ var bodyParser = require('body-parser');
 var autoprefixer = require('autoprefixer');
 var postcss = require('postcss');
 const PORT = process.env.PORT || 5000;
-// var cors = require('cors')
-// app.use(cors())
 
 app.use(bodyParser.json());
 
@@ -19,9 +17,7 @@ app.use('/assets', express.static(path.join(__dirname, 'src/assets')));
 app.put('/pdf', (req, res) => {
   var options = { format: 'A4' };
 
-  postcss([ autoprefixer({
-    browsers: ['iOS >=7']
-  }) ]).process(req.body.css, { from: undefined }).then(function (result) {
+  postcss([ autoprefixer() ]).process(req.body.css, { from: undefined }).then(function (result) {
     var template = createTemplate(result.css, req.body.html);
 
     pdf.create(template, options).toBuffer(function(err, buffer) {
@@ -36,7 +32,7 @@ app.put('/pdf', (req, res) => {
         'Content-Disposition': 'attachment; filename=some_file.pdf',
         'Content-Length': buffer.length
       });
-      res.end(new Buffer(buffer, 'binary'));
+      res.end(new Buffer.from(buffer, 'binary'));
     });
   });
 });
@@ -56,26 +52,5 @@ function createTemplate(style, html) {
   </html>
   `;
 }
-
-// app.use(bodyParser.text({ type: 'text/html' }))
-// app.put('/pdf', (req, res) => {
-//   var options = { format: 'A4' };
-
-//   // console.log(prefixedTemplate);
-//   pdf.create(req.body, options).toBuffer(function(err, buffer) {
-//     if (err) {
-//       console.log(err);
-//       res.err('PDF creation failed');
-//       return;
-//     }
-
-//     res.writeHead(200, {
-//       'Content-Type': 'application/pdf',
-//       'Content-Disposition': 'attachment; filename=some_file.pdf',
-//       'Content-Length': buffer.length
-//     });
-//     res.end(new Buffer(buffer, 'binary'))
-//   });
-// })
 
 app.listen(PORT, () => {console.log(`Listening on port ${PORT}...`);});
