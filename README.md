@@ -2,9 +2,9 @@
 
 A web application to easily create a pdf file from HTML and CSS with code editors. Build with an intention to use as a resume builder but currently, but can be used to create any sort of .pdf documents.
 
-## Homepage: [https://frontwork.io](https://frontwork.io)
+## Homepage: [https://resume-builder.frontwork.io](https://resume-builder.frontwork.io)
 
-[![](src/assets/thumbnail.png)](https://frontwork.io)
+[![](src/assets/thumbnail.png)](https://resume-builder.frontwork.io)
 
 ## Development
 1. `npm install`
